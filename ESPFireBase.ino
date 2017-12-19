@@ -3,8 +3,7 @@
 #define FIREBASE_HOST "xxxxxxxxxxxxxxxxxx.firebaseio.com" //Your Firebase Project URL goes here without "http:" , "\" and "/"
 #define FIREBASE_AUTH "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" //Your Firebase Database Secret goes here
 #define WIFI_SSID "xxxxxxxxxx" //your WiFi SSID for which yout NodeMCU connects
-#define WIFI_PASSWORD "12akhil!"//Password of your wifi network 
-int Ledpin=D4;//Inbuilt LED 
+#define WIFI_PASSWORD "xxxxxxxxx"//Password of your wifi network 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200); //baud rate ,if you want to see the process in the serial monitor ,same baud rate should be set.
@@ -20,7 +19,8 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   Firebase.begin(FIREBASE_HOST,FIREBASE_AUTH);
-  Firebase.set("S",0);//the variable in which is used in our Firebase and MIT App Inventor 
+  Firebase.set("S",0);//the variable in which is used in our Firebase and MIT App Inventor
+  Firebase.set("S",0);//the variable in which is used in our Firebase and MIT App Inventor
 }
 void firebasereconnect()
 {
@@ -31,7 +31,7 @@ int l;
 void loop() {
   if (Firebase.failed()) {
       Serial.print("setting number failed:");
-      Serial.println(Firebase.error());  
+      Serial.println(Firebase.error());
       firebasereconnect();
       return;
   }
@@ -45,5 +45,3 @@ void loop() {
       Serial.println("lightOFF");
     }
 }
-
-
